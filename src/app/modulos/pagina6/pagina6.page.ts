@@ -11,7 +11,7 @@ export class Pagina6Page {
   constructor(private router: Router) { }
 
   public voltar(): void {   
-    this.router.navigateByUrl('/pagina5');    
+    this.router.navigateByUrl('/modulos/pagina5');    
   }
 
 }

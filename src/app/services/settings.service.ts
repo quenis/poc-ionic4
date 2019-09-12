@@ -25,7 +25,7 @@ export class SettingsService {
     private loadingCtrl: LoadingController) { }
 
     public verificarConexaoInternet(): Observable<any> {
-      return this.httpClient.get(this.baseUrlPatrimonioInfra + '/local-bem/local-bem/ativos/' + 0).pipe(timeout(3000));
+      return this.httpClient.get(this.baseUrlPatrimonioInfra + '/local-bem/local-bem/ativos/' + 0).pipe(timeout(10000));
     }
 
      /**

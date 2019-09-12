@@ -11,12 +11,12 @@ export class Pagina5Page {
   constructor(private router: Router) { }
 
   public pagina6(): void {   
-    this.router.navigateByUrl('/pagina6');
+    this.router.navigateByUrl('/modulos/pagina6');
     
   }
 
   public voltar(): void {   
-    this.router.navigateByUrl('/pagina4');    
+    this.router.navigateByUrl('/modulos/pagina4');    
   }
 
 }

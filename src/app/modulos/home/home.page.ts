@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Camera } from '@ionic-native/camera/ngx';
 import { Router } from '@angular/router';
-import { SettingsService } from '../services/settings.service';
+import { SettingsService } from 'src/app/services/settings.service';
+
 
 @Component({
   selector: 'app-home',
@@ -34,7 +35,7 @@ export class HomePage {
   }
 
   public iniciarNavegacao(): void {   
-    this.router.navigateByUrl('/pagina1');    
+    this.router.navigateByUrl('/modulos/pagina1');    
   }  
 
   ionViewWillEnter() {
