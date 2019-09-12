@@ -11,7 +11,7 @@ import { SettingsService } from 'src/app/services/settings.service';
 })
 export class HomePage {
 
-  private foto: any = '';
+  public foto: any = '';
   constructor(private camera: Camera,
     private settings: SettingsService,
     private router: Router) { }
@@ -44,7 +44,7 @@ export class HomePage {
       .subscribe(
         () => {
           this.settings.fecharCarregando();
-         
+          //this.settings.exibeDialogoGeral(this.settings.baseUrlPatrimonioInfra);
         }, error => {
           if (error.name === "TimeoutError") {
             this.settings.exibeDialogoGeral('Não foi possível conectar ao servidor. Verifique sua conexão com à internet.');

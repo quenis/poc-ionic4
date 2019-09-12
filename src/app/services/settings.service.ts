@@ -4,15 +4,17 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpParams, HttpHeaders, HttpBackend } from '@angular/common/http';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { timeout } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+import { Constantes } from '../shared/constantes/constantes';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SettingsService {
 
-  public baseUrl: string = 'https://teste.api.ufg.br'; // homologação 
-  public baseUrlPatrimonioInfra: string = `${this.baseUrl}/patrimonio/1.0.0`; // homologação
-  public tokenWSO2: Promise<any> = this.storage.set('token', '8682c99b-8d80-30ba-aa41-5a0b07171213'); //Homologação
+  public baseUrl = environment.api_wso2; 
+  public baseUrlPatrimonioInfra = environment.api_app; 
+  public tokenWSO2: Promise<any> = this.storage.set('token', Constantes.ACCESS_TOKEN_WSO2); 
   public isAlertPresent: boolean = false;
   private gAlert: HTMLIonAlertElement; 
   private loader: HTMLIonLoadingElement;
@@ -40,7 +42,7 @@ export class SettingsService {
       
     let options = {
       headers: new HttpHeaders()
-      .set('Authorization', 'Basic NGl6amFzcVJ4REhxMVhQb2tsZTBUcEZOeFA0YTpyNnBqQlVwWGdpYVc4cmI4b3ZpT3VpemlhcU1h')
+      .set('Authorization', `Basic ${Constantes.BASE64_TOKEN}`)
       .set('Content-Type', 'application/x-www-form-urlencoded')
     };
 

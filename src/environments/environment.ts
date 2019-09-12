@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  api_wso2: 'https://teste.api.ufg.br',
+  api_app: 'https://teste.api.ufg.br/patrimonio/1.0.0'
 };
 
 /*
