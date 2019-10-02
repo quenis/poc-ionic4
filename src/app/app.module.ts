@@ -12,6 +12,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { InterceptorService } from './services/interceptor.service';
+import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +26,7 @@ import { InterceptorService } from './services/interceptor.service';
   ],
   providers: [
     StatusBar,
+    FirebaseX,
     SplashScreen,
     Camera,
     { 
