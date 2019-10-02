@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { NavigatorService } from 'src/app/services/navigator.service';
 
 @Component({
   selector: 'app-pagina5',
@@ -8,15 +8,14 @@ import { Router } from '@angular/router';
 })
 export class Pagina5Page {
 
-  constructor(private router: Router) { }
+  constructor(private navigator: NavigatorService) { }
 
   public pagina6(): void {   
-    this.router.navigateByUrl('/modulos/pagina6');
-    
+    this.navigator.goTo('/modulos/pagina6');    
   }
 
   public voltar(): void {   
-    this.router.navigateByUrl('/modulos/pagina4');    
+    this.navigator.goTo('/modulos/pagina4');    
   }
 
 }

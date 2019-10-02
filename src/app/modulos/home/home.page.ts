@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Camera } from '@ionic-native/camera/ngx';
-import { Router, NavigationExtras  } from '@angular/router';
 import { SettingsService } from 'src/app/services/settings.service';
 import { NavigatorService } from 'src/app/services/navigator.service';
 
@@ -50,15 +49,9 @@ export class HomePage {
       anoReferencia: new Date().getFullYear(),
       status: 1,
       usuarioDenominacaoCorreta: false
-    };
+    };  
 
-    let navigationExtras: NavigationExtras = {
-      state: {
-        param: 'teste'
-      }
-    };
-
-    this.navigator.goTo('/modulos/pagina1', navigationExtras);   
+    this.navigator.goTo('/modulos/pagina1', objeto_teste);   
   }  
 
   ionViewWillEnter() {
