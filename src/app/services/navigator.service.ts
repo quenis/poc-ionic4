@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Router, NavigationExtras } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
-export class NavigatorService { 
+export class NavigatorService {   
+
+  private param: any;
 
   constructor(private router: Router) {
     
@@ -16,21 +18,15 @@ export class NavigatorService {
    * @param url Url da página.
    * @param param Parâmetro que será passado para a página.
    */
-  public async goTo(url, param?: any) {        
-    await this.router.navigate([url], param ? this.passParam(param) : param);
+  public async goTo(url, param?: any) {    
+    await this.router.navigate([url], this.param = param);
   }  
-
+  
   /**
-   * Passa o parâmetro caso haja algum.
-   *    
-   * @param param Parâmetro que será passado para a página.
+   * Recupera o parâmetro caso haja.
+   *      
    */
-  private passParam(param: any): NavigationExtras {        
-    let navigationExtras: NavigationExtras = {
-      state: {
-        param: param
-      }
-    };
-    return navigationExtras;
+  public getParam() {      
+    return this.param;
   }  
 }

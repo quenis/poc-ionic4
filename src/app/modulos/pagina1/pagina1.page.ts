@@ -9,23 +9,18 @@ import { NavigatorService } from 'src/app/services/navigator.service';
 })
 export class Pagina1Page {
 
-  constructor(private router: Router,
-    private route: ActivatedRoute,
-    private navigator: NavigatorService) {
+  constructor(private navigator: NavigatorService) {
 
-    this.route.queryParams.subscribe(() => {
-      if (this.router.getCurrentNavigation().extras.state) {
-        console.log(this.router.getCurrentNavigation().extras.state.param);
-      }
-    });
+    let retorno = this.navigator.getParam();
+    console.log(retorno);    
   }
 
-  public pagina2(): void {   
-    this.navigator.goTo('/modulos/pagina2'); 
+  public pagina2(): void {
+    this.navigator.goTo('/modulos/pagina2');
   }
 
-  public voltar(): void {    
-    this.navigator.goTo('/modulos/home'); 
+  public voltar(): void {
+    this.navigator.goTo('/modulos/home');
   }
 
   ionViewWillEnter() {
