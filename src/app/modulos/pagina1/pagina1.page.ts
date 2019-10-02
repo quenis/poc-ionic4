@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-pagina1',
@@ -8,15 +8,26 @@ import { Router } from '@angular/router';
 })
 export class Pagina1Page {
 
-  constructor(private router: Router) { }
-
-  public pagina2(): void {   
-    this.router.navigateByUrl('/modulos/pagina2');    
+  constructor(private router: Router,
+    private route: ActivatedRoute) {
+      
+    this.route.queryParams.subscribe(() => {
+      if (this.router.getCurrentNavigation().extras.state) {
+        console.log(this.router.getCurrentNavigation().extras.state.param);
+      }
+    });
   }
 
-  public voltar(): void {   
-    this.router.navigateByUrl('/modulos/home');    
+
+  public pagina2(): void {
+    this.router.navigateByUrl('/modulos/pagina2');
   }
 
+  public voltar(): void {
+    this.router.navigateByUrl('/modulos/home');
+  }
 
+  ionViewWillEnter() {
+
+  }
 }

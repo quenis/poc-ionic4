@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Camera } from '@ionic-native/camera/ngx';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras  } from '@angular/router';
 import { SettingsService } from 'src/app/services/settings.service';
+import { NavigatorService } from 'src/app/services/navigator.service';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class HomePage {
   public foto: any = '';
   constructor(private camera: Camera,
     private settings: SettingsService,
-    private router: Router) { }
+    private navigator: NavigatorService) { }
 
   public tirarFoto(): void {   
   
@@ -34,8 +35,30 @@ export class HomePage {
       });
   }
 
-  public iniciarNavegacao(): void {   
-    this.router.navigateByUrl('/modulos/pagina1');    
+  public iniciarNavegacao(): void {       
+
+    let objeto_teste = {
+      login: 'quenis',
+      numeroTombamento: '1234',
+      refFotoPlaqueta: 'url1',
+      refFotoBem: 'url2',
+      situacao: '3',
+      idLocalBem: '1596',      
+      latitude: '-49,65454',
+      longitude: '-26,645',
+      mesReferencia: new Date().getMonth() + 1,
+      anoReferencia: new Date().getFullYear(),
+      status: 1,
+      usuarioDenominacaoCorreta: false
+    };
+
+    let navigationExtras: NavigationExtras = {
+      state: {
+        param: 'teste'
+      }
+    };
+
+    this.navigator.goTo('/modulos/pagina1', navigationExtras);   
   }  
 
   ionViewWillEnter() {

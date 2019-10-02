@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "966712188560",
+    "firebase_url": "https://poc-ionic4.firebaseio.com",
+    "project_id": "poc-ionic4",
+    "storage_bucket": "poc-ionic4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:966712188560:android:bcc53afea50cacbc104215",
+        "android_client_info": {
+          "package_name": "br.ufg.cercomp.pocionic4"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "966712188560-kfsr01d5b5hevsdn25l0an12d1estvef.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrsOb9L3wXYPOKZj3R_u4lz6qD2Mf7cko"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "966712188560-kfsr01d5b5hevsdn25l0an12d1estvef.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
