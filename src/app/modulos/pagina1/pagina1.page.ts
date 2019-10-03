@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import { NavigatorService } from 'src/app/services/navigator.service';
 
 @Component({
