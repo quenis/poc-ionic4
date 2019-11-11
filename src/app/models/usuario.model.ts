@@ -3,4 +3,5 @@ export class Usuario {
     matricula: string;  
     assinatura: string; // Token JWT usado para consultar informações pessoais do usuário logado 
     login: string; 
+    constructor() { }
 }

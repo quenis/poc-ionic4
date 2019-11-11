@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  api_wso2: 'https://teste.api.ufg.br',
-  api_app: 'https://teste.api.ufg.br/patrimonio/1.0.0'
+  api_url: 'https://teste.api.ufg.br'  
 };
 
 /*

@@ -59,8 +59,7 @@ export class HomePage {
       this.settings.verificarConexaoInternet()
       .subscribe(
         () => {
-          this.settings.fecharCarregando();
-          //this.settings.exibeDialogoGeral(this.settings.baseUrlPatrimonioInfra);
+          this.settings.fecharCarregando();          
         }, error => {
           if (error.name === "TimeoutError") {
             this.settings.exibeDialogoGeral('Não foi possível conectar ao servidor. Verifique sua conexão com à internet.');

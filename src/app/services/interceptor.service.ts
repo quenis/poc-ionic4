@@ -7,19 +7,24 @@ import {
 } from '@angular/common/http';
 import { SettingsService } from './settings.service';
 import { Observable, throwError, from } from 'rxjs';
+import { Storage } from '@ionic/storage';
 import { catchError, mergeMap, flatMap } from 'rxjs/operators';
+import { Constantes } from '../shared/constantes/constantes';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InterceptorService implements HttpInterceptor {
 
-  constructor(private settings: SettingsService) { }
+  private tokenWSO2: Promise<any> = this.storage.set('token', Constantes.ACCESS_TOKEN_WSO2);
+
+  constructor(private settings: SettingsService,
+    private storage: Storage) { }
 
   // Intercepta a requisição antes dela ser enviada.
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    return from(this.settings.tokenWSO2)
+    return from(this.tokenWSO2)
       .pipe(
         mergeMap(token => {
 
