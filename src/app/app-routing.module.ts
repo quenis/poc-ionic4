@@ -21,7 +21,8 @@ const routes: Routes = [
   { path: 'modulos/pagina4', loadChildren: './modulos/pagina4/pagina4.module#Pagina4PageModule' },
   { path: 'modulos/pagina5', loadChildren: './modulos/pagina5/pagina5.module#Pagina5PageModule' },
   { path: 'modulos/pagina6', loadChildren: './modulos/pagina6/pagina6.module#Pagina6PageModule' },
-  { path: 'modulos/radio', loadChildren: './modulos/radio/radio.module#RadioPageModule' }
+  { path: 'modulos/radio', loadChildren: './modulos/radio/radio.module#RadioPageModule' },
+  { path: 'mapbox', loadChildren: './modulos/mapbox/mapbox.module#MapboxPageModule' }
 ];
 
 @NgModule({
