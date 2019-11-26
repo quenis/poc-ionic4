@@ -30,11 +30,18 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-
-  <ion-row>
-    <ion-col class="ion-text-center">
-      <ion-button (click)="iniciarNavegacao()">iniciar navegação</ion-button>
-    </ion-col>
-  </ion-row>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <ion-button (click)="iniciarNavegacao()">iniciar navegação</ion-button>
+      </ion-col>
+    </ion-row>
+  
+    <ion-row class="ion-text-center">
+      <ion-col>
+        <ion-button (click)="openMapBox()">MapBox</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>
