@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { InterceptorService } from './services/interceptor.service';
 import { FirebaseX } from '@ionic-native/firebase-x/ngx';
+import { Media } from '@ionic-native/media/ngx'; 
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,10 +26,11 @@ import { FirebaseX } from '@ionic-native/firebase-x/ngx';
     HttpClientModule
   ],
   providers: [
+    Media,
+    Camera,
     StatusBar,
     FirebaseX,
     SplashScreen,
-    Camera,
     { 
       provide: RouteReuseStrategy, 
       useClass: IonicRouteStrategy 

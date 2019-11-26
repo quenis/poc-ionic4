@@ -52,7 +52,11 @@ export class HomePage {
     };  
 
     this.navigator.goTo('/modulos/pagina1', objeto_teste);   
-  }  
+  } 
+
+  irParaRadio(){
+    this.navigator.goTo('/modulos/radio');
+  }
 
   ionViewWillEnter() {
     this.settings.abrirCarregando('Verificando conexão...').then(() => {
