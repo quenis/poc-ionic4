@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  api_url: 'https://teste.api.ufg.br'  
+  api_url: 'https://teste.api.ufg.br',
+  MAPBOX_TOKEN: 'pk.eyJ1IjoiYW5kcmVsdWlzcyIsImEiOiJjazNmdmNvMGkwOTR2M3BuenB4YjNmeDhpIn0.GUaalSOSv1QW-mT_PNEgCQ'
 };
 
 /*

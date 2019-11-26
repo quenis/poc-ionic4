@@ -12,12 +12,16 @@ import { NavigatorService } from 'src/app/services/navigator.service';
 export class HomePage {
 
   public foto: any = '';
-  constructor(private camera: Camera,
+  constructor(
+    private camera: Camera,
     private settings: SettingsService,
-    private navigator: NavigatorService) { }
+    private navigator: NavigatorService
+  ) {
 
-  public tirarFoto(): void {   
-  
+  }
+
+  public tirarFoto(): void {
+
     this.camera.getPicture({
       quality: 100,
       correctOrientation: true,
@@ -25,7 +29,7 @@ export class HomePage {
       targetWidth: 1000,
       targetHeight: 600
     }).then(
-      (foto) => {       
+      (foto) => {
         let base64Image = 'data:image/jpeg;base64,' + foto;
         this.foto = base64Image;
       }, (error) => {
@@ -34,7 +38,7 @@ export class HomePage {
       });
   }
 
-  public iniciarNavegacao(): void {       
+  public iniciarNavegacao(): void {
 
     let objeto_teste = {
       login: 'quenis',
@@ -42,32 +46,35 @@ export class HomePage {
       refFotoPlaqueta: 'url1',
       refFotoBem: 'url2',
       situacao: '3',
-      idLocalBem: '1596',      
+      idLocalBem: '1596',
       latitude: '-49,65454',
       longitude: '-26,645',
       mesReferencia: new Date().getMonth() + 1,
       anoReferencia: new Date().getFullYear(),
       status: 1,
       usuarioDenominacaoCorreta: false
-    };  
+    };
 
-    this.navigator.goTo('/modulos/pagina1', objeto_teste);   
-  }  
+    this.navigator.goTo('/modulos/pagina1', objeto_teste);
+  }
 
   ionViewWillEnter() {
     this.settings.abrirCarregando('Verificando conexão...').then(() => {
       this.settings.verificarConexaoInternet()
-      .subscribe(
-        () => {
-          this.settings.fecharCarregando();          
-        }, error => {
-          if (error.name === "TimeoutError") {
-            this.settings.exibeDialogoGeral('Não foi possível conectar ao servidor. Verifique sua conexão com à internet.');
-          }          
-          this.settings.fecharCarregando();
-        }
-      );
+        .subscribe(
+          () => {
+            this.settings.fecharCarregando();
+          }, error => {
+            if (error.name === "TimeoutError") {
+              this.settings.exibeDialogoGeral('Não foi possível conectar ao servidor. Verifique sua conexão com à internet.');
+            }
+            this.settings.fecharCarregando();
+          }
+        );
     });
-      
+  }
+
+  public openMapBox(): void {
+    this.navigator.goTo('mapbox');
   }
 }

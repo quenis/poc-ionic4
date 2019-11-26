@@ -20,7 +20,8 @@ const routes: Routes = [
   { path: 'modulos/pagina3', loadChildren: './modulos/pagina3/pagina3.module#Pagina3PageModule' },
   { path: 'modulos/pagina4', loadChildren: './modulos/pagina4/pagina4.module#Pagina4PageModule' },
   { path: 'modulos/pagina5', loadChildren: './modulos/pagina5/pagina5.module#Pagina5PageModule' },
-  { path: 'modulos/pagina6', loadChildren: './modulos/pagina6/pagina6.module#Pagina6PageModule' }
+  { path: 'modulos/pagina6', loadChildren: './modulos/pagina6/pagina6.module#Pagina6PageModule' },  { path: 'mapbox', loadChildren: './modulos/mapbox/mapbox.module#MapboxPageModule' }
+
 ];
 
 @NgModule({
