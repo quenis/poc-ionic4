@@ -1,7 +1,15 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 import mapbox from 'mapbox-gl';
+
+const HTTPOPTIONS = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' })
+}
+
+const COLOR_PIN_OTHERS = '#1F75FE';
+const COLOR_PIN_MY_POSITION = '#D40000';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +25,11 @@ export class MapboxService {
     { latitude: -16.683216, longitude: -49.257829, titulo: 'Faculdade BySelf', descricao: 'Ensino modelo mundial onde o aluno decide o que estudar e que horas estudar.' }
   ]
 
+  private myPosition = { latitude: -16.6799, longitude: -49.255, titulo: 'Eu', descricao: 'Minha posição atual' };
+  private routeEndPoint = { latitude: -16.6799, longitude: -49.262920, titulo: 'Casa do seu zé', descricao: 'Avó fraterno' };
+
   constructor(
-    
+    private http: HttpClient
   ) {
     mapbox.accessToken = environment.MAPBOX_TOKEN;
   }
@@ -34,17 +45,72 @@ export class MapboxService {
       center: [-49.255, -16.6799],
       zoom: 14
     });
-    new mapbox.Marker({ color: '#D40000' }).setLngLat([-49.255, -16.6799]).addTo(this._mapInstance);
-    this.markerManyPoints();
+    this.instanceMarker([this.myPosition], COLOR_PIN_MY_POSITION);
+    this.instanceMarker(this.manyPoints, COLOR_PIN_OTHERS);
+    this.routeMap();
   }
 
-  public markerManyPoints() {
-    this.manyPoints.forEach(point => {
-      new mapbox.Marker({ color: '#1F75FE' }).setLngLat([point.longitude, point.latitude])
-      .setPopup(new mapbox.Popup({ offset: 25 }).setHTML('<h3>' + point.titulo + '</h3><p>' + point.descricao + '</p>'))
-      .addTo(this._mapInstance);
+  private instanceMarker(markers: any[], color: string) {
+    markers.forEach(point => {
+      new mapbox.Marker({ color, closeButton: false }).setLngLat([point.longitude, point.latitude])
+        .setPopup(new mapbox.Popup({ offset: 25, closeButton: false }).setHTML('<h3>' + point.titulo + '</h3><p>' + point.descricao + '</p>'))
+        .addTo(this._mapInstance);
     });
   }
 
+  public routeMap() {
+    this.instanceMarker([this.routeEndPoint], '#71BC78');
+    const SERVICE = `directions/v5/mapbox/driving-traffic/${this.myPosition.longitude},${this.myPosition.latitude};${this.routeEndPoint.longitude},${this.routeEndPoint.latitude}?geometries=geojson&access_token=${environment.MAPBOX_TOKEN}`;
+    this.http.get(`${environment.MAPBOX_SERVICE_BASE_URL}${SERVICE}`, HTTPOPTIONS).subscribe((response: any) => {
+      let route = response.routes[0].geometry.coordinates;
+      let tempGeojson = {
+        type: 'Feature',
+        properties: {},
+        geometry: {
+          type: 'LineString',
+          coordinates: route
+        }
+      };
+      if (this._mapInstance.getSource('route')) {
+        this._mapInstance.getSource('route').setData(tempGeojson);
+      } else {
+        this.createSource();
+        this._mapInstance.getSource('route').setData(tempGeojson);
+        this.createLayer();
+      }
+    });
+  }
+
+  private createSource() {
+    this._mapInstance.addSource('route', {
+      type: 'geojson',
+      data: {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-77.0323, 38.9131]
+        },
+        "properties": {}
+      }
+    });
+  }
+
+  private createLayer() {
+    this._mapInstance.addLayer({
+      id: 'routes',
+      type: 'line',
+      source: 'route',
+      layout: {
+        'line-join': 'round',
+        'line-cap': 'round'
+      },
+      paint: {
+        'line-color': '#3887be',
+        'line-width': 5,
+        'line-opacity': 0.75,
+        'line-dasharray': [1, 2]
+      }
+    });
+  }
 
 }
