@@ -58,8 +58,16 @@ export class HomePage {
     this.navigator.goTo('/modulos/pagina1', objeto_teste);
   }
   
-  irParaRadio(){
+  irParaRadio() {
     this.navigator.goTo('/modulos/radio');
+  }
+
+  public openMapBox(): void {
+    this.navigator.goTo('mapbox');
+  }
+
+  public openLeaflet() {
+    this.navigator.goTo('leaflet');
   }
 
   ionViewWillEnter() {
@@ -76,9 +84,5 @@ export class HomePage {
           }
         );
     });
-  }
-
-  public openMapBox(): void {
-    this.navigator.goTo('mapbox');
   }
 }

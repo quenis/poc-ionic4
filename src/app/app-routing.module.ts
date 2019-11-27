@@ -22,7 +22,8 @@ const routes: Routes = [
   { path: 'modulos/pagina5', loadChildren: './modulos/pagina5/pagina5.module#Pagina5PageModule' },
   { path: 'modulos/pagina6', loadChildren: './modulos/pagina6/pagina6.module#Pagina6PageModule' },
   { path: 'modulos/radio', loadChildren: './modulos/radio/radio.module#RadioPageModule' },
-  { path: 'mapbox', loadChildren: './modulos/mapbox/mapbox.module#MapboxPageModule' }
+  { path: 'mapbox', loadChildren: './modulos/mapbox/mapbox.module#MapboxPageModule' },  { path: 'leaflet', loadChildren: './modulos/leaflet/leaflet.module#LeafletPageModule' }
+
 ];
 
 @NgModule({
