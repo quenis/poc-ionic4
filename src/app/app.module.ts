@@ -33,11 +33,8 @@ import { MusicControls } from '@ionic-native/music-controls/ngx';
     StatusBar,
     FirebaseX,
     SplashScreen,
-<<<<<<< Updated upstream
     LaunchNavigator,
-=======
     MusicControls,
->>>>>>> Stashed changes
     { 
       provide: RouteReuseStrategy, 
       useClass: IonicRouteStrategy 
