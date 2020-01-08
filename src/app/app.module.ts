@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { InterceptorService } from './services/interceptor.service';
 import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 import { Media } from '@ionic-native/media/ngx'; 
+import { MusicControls } from '@ionic-native/music-controls/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,7 +33,11 @@ import { Media } from '@ionic-native/media/ngx';
     StatusBar,
     FirebaseX,
     SplashScreen,
+<<<<<<< Updated upstream
     LaunchNavigator,
+=======
+    MusicControls,
+>>>>>>> Stashed changes
     { 
       provide: RouteReuseStrategy, 
       useClass: IonicRouteStrategy 
